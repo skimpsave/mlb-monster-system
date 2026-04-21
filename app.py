@@ -4,10 +4,10 @@ import pandas as pd
 
 st.title("🔥 MLB MONSTER SYSTEM")
 
-DFS_URL = "YOUR_DFS_CSV_LINK"
-HR_URL = "YOUR_HR_CSV_LINK"
-BETS_URL = "YOUR_BETS_CSV_LINK"
-STACKS_URL = "YOUR_STACKS_CSV_LINK"
+DFS_URL = "https://docs.google.com/spreadsheets/d/1LQmI3YBA_oOVQUSXiWsN2JbtP2mgf5YNOCEof0MUFrY/edit?gid=0#gid=0"
+HR_URL = "https://docs.google.com/spreadsheets/d/1LQmI3YBA_oOVQUSXiWsN2JbtP2mgf5YNOCEof0MUFrY/edit?gid=0#gid=0"
+BETS_URL = "https://docs.google.com/spreadsheets/d/1LQmI3YBA_oOVQUSXiWsN2JbtP2mgf5YNOCEof0MUFrY/edit?gid=0#gid=0"
+STACKS_URL = "https://docs.google.com/spreadsheets/d/1LQmI3YBA_oOVQUSXiWsN2JbtP2mgf5YNOCEof0MUFrY/edit?gid=0#gid=0"
 
 def load(url):
     return pd.read_csv(url)
