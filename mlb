@@ -1,0 +1,16 @@
+mlb-monster-system/
+│
+├── data_pipeline.py
+├── feature_engineering.py
+├── model_hr.py
+├── model_dfs.py
+├── betting_model.py
+├── google_sync.py
+├── run_all.py
+│
+├── batters.csv
+├── pitchers.csv
+├── parks.csv
+│
+├── requirements.txt
+└── .github/workflows/daily.yml
