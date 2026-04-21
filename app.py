@@ -1,42 +1,30 @@
+
 import streamlit as st
 import pandas as pd
-import sqlite3
-import os
 
-st.title("🔥 MLB MONSTER DASHBOARD")
+st.title("🔥 MLB MONSTER SYSTEM")
 
-# -----------------------
-# CREATE DB IF NOT EXISTS
-# -----------------------
-if not os.path.exists("mlb_data.db"):
-    st.warning("Database not found. Running model...")
+DFS_URL = "YOUR_DFS_CSV_LINK"
+HR_URL = "YOUR_HR_CSV_LINK"
+BETS_URL = "YOUR_BETS_CSV_LINK"
+STACKS_URL = "YOUR_STACKS_CSV_LINK"
 
-    import model_hr
-    import model_dfs
-    import betting_model
+def load(url):
+    return pd.read_csv(url)
 
-# -----------------------
-# CONNECT DB
-# -----------------------
-conn = sqlite3.connect("mlb_data.db")
+dfs = load(DFS_URL)
+hr = load(HR_URL)
+bets = load(BETS_URL)
+stacks = load(STACKS_URL)
 
-# -----------------------
-# LOAD DATA SAFELY
-# -----------------------
-try:
-    df = pd.read_sql("SELECT * FROM results", conn)
-except:
-    st.error("No data found yet. Model may not have run.")
-    st.stop()
-
-# -----------------------
-# DISPLAY
-# -----------------------
-st.subheader("DFS RANKINGS")
-st.dataframe(df.sort_values("DFS_PROJ", ascending=False).head(20))
+st.subheader("DFS")
+st.dataframe(dfs)
 
 st.subheader("HR PICKS")
-st.dataframe(df.sort_values("HR_PROB", ascending=False).head(15))
+st.dataframe(hr)
 
-st.subheader("BETTING EDGES")
-st.dataframe(df.sort_values("EV_EDGE", ascending=False).head(10))
+st.subheader("BETTING")
+st.dataframe(bets)
+
+st.subheader("STACKS")
+st.dataframe(stacks)
