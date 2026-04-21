@@ -1,29 +1,13 @@
+st.subheader("🔥 TOP DFS PLAYS")
+st.dataframe(df.sort_values(by="DFS_PROJ", ascending=False).head(20))
 
-import streamlit as st
-import pandas as pd
+st.subheader("💣 HOME RUN PICKS")
+st.dataframe(df.sort_values(by="HR_PROB", ascending=False).head(15))
 
-st.title("🔥 MLB MONSTER SYSTEM")
-DFS_URL = https://docs.google.com/spreadsheets/d/1LQmI3YBA_oOVQUSXiWsN2JbtP2mgf5YNOCEof0MUFrY/edit?gid=0#gid=0"
-HR_URL = "https://docs.google.com/spreadsheets/d/1LQmI3YBA_oOVQUSXiWsN2JbtP2mgf5YNOCEof0MUFrY/edit?gid=2074315006#gid=2074315006"
-BETS_URL = "https://docs.google.com/spreadsheets/d/1LQmI3YBA_oOVQUSXiWsN2JbtP2mgf5YNOCEof0MUFrY/edit?gid=52174597#gid=52174597"
-STACKS_URL = "https://docs.google.com/spreadsheets/d/1LQmI3YBA_oOVQUSXiWsN2JbtP2mgf5YNOCEof0MUFrY/edit?gid=752175886#gid=752175886"
+st.subheader("💰 BEST BETS (+EV)")
+st.dataframe(pd.DataFrame(bets))
 
-def load(url):
-    return pd.read_csv()
-
-dfs = load(DFS_URL)
-hr = load(HR_URL)
-bets = load(BETS_URL)
-stacks = load(STACKS_URL)
-
-st.subheader("DFS")
-st.dataframe(dfs)
-
-st.subheader("HR PICKS")
-st.dataframe(hr)
-
-st.subheader("BETTING")
-st.dataframe(bets)
-
-st.subheader("STACKS")
-st.dataframe(stacks)
+st.subheader("📊 TEAM STACKS")
+st.dataframe(
+    df.groupby("Team")["DFS_PROJ"].sum().sort_values(ascending=False).head(10)
+)
