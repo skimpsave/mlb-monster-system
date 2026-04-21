@@ -11,7 +11,6 @@ st.title("🔥 MLB MONSTER DASHBOARD")
 if not os.path.exists("mlb_data.db"):
     st.warning("Database not found. Running model...")
 
-    import data_pipeline
     import model_hr
     import model_dfs
     import betting_model
